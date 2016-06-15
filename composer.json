@@ -1,0 +1,17 @@
+{
+  "name": "hirobits/criteria",
+  "description": "",
+  "autoload": {
+    "psr-0": {
+      "ServiceInterface": "./src",
+      "Driver": "./src"
+    }
+  },
+  "require": {
+
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*",
+    "phpunit/dbunit": ">=1.2"
+  }
+}
