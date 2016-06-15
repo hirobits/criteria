@@ -2,13 +2,13 @@
 
 namespace Driver\DB\Criteria;
 
-use ServiceInterface\DB\Criteria\CriteriaInterface;
+use ServiceInterface\DB\Criteria\Criteria;
 
 /**
  * Class MySqlCriteria
  * @package Driver\DB\Criteria
  */
-class MySqlCriteria implements CriteriaInterface
+class MySqlCriteria implements Criteria
 {
     /**
      * @var string
@@ -406,7 +406,7 @@ class MySqlCriteria implements CriteriaInterface
 
         $oldValues = $this->getValues();
 
-        $this->resetValues($vals); // SET句が先なので先頭に値を入れる
+        $this->resetValues($vals); // SET value is before WHERE.
         $this->addValues($oldValues);
 
         $sql = str_replace("{TABLE}",   $this->table, $sql);
@@ -426,7 +426,7 @@ class MySqlCriteria implements CriteriaInterface
 
         $where = $this->buildSelectWhere();
 
-        // WHEREなしは安全のため不可
+        // warning : empty where query
         if (!$where) {
             return false;
         }
